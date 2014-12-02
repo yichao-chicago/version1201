@@ -1,0 +1,159 @@
+<!-- Validation failure messages -->
+
+<% if @list.errors.any? %>
+  <% @list.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<!-- Simple full-width example -->
+
+<div class="page-header">
+  <h1>Edit List #<%= @list.id %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_list/<%= @list.id %>" class="form-horizontal">
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="col-sm-2 control-label">
+          Title
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @list.title %>">
+        </div>
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="col-sm-2 control-label">
+          Description
+        </label>
+        <div class="col-sm-10">
+          <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @list.description %></textarea>
+        </div>
+      </div>
+
+      <!-- Label and input for expiration -->
+      <div class="form-group">
+        <label for="expiration" class="col-sm-2 control-label">
+          Expiration
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="expiration" name="expiration" placeholder="Expiration" class="form-control" value="<%= @list.expiration %>">
+        </div>
+      </div>
+
+      <!-- Label and input for privacy -->
+      <div class="form-group">
+        <label for="privacy" class="col-sm-2 control-label">
+          Privacy
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="privacy" name="privacy" placeholder="Privacy" class="form-control" value="<%= @list.privacy %>">
+        </div>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="col-sm-2 control-label">
+          User
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @list.user_id %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" value="Update List" class="btn btn-warning">
+          or
+          <a href="/lists/<%= @list.id %>">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- End simple full-width example-->
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit List #<%= @list.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_list/<%= @list.id %>" class="form-horizontal">
+          <!-- Label and input for title -->
+          <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">
+              Title
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @list.title %>">
+            </div>
+          </div>
+
+          <!-- Label and input for description -->
+          <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">
+              Description
+            </label>
+            <div class="col-sm-10">
+              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @list.description %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for expiration -->
+          <div class="form-group">
+            <label for="expiration" class="col-sm-2 control-label">
+              Expiration
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="expiration" name="expiration" placeholder="Expiration" class="form-control" value="<%= @list.expiration %>">
+            </div>
+          </div>
+
+          <!-- Label and input for privacy -->
+          <div class="form-group">
+            <label for="privacy" class="col-sm-2 control-label">
+              Privacy
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="privacy" name="privacy" placeholder="Privacy" class="form-control" value="<%= @list.privacy %>">
+            </div>
+          </div>
+
+          <!-- Label and input for user_id -->
+          <div class="form-group">
+            <label for="user_id" class="col-sm-2 control-label">
+              User
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @list.user_id %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" value="Update List" class="btn btn-warning">
+              or
+              <a href="/lists/<%= @list.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->
