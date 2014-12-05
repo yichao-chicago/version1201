@@ -19,7 +19,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="//maxc_-dn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,19 +34,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">Version1201</a>
+      <a href="/" class="navbar-brand">TimesL</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">About</a></li>
+        <li><a href="#">contact us</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% if 1 > 2 %>
+        <% if user_signed_in? %>
           <li><a href="/users/edit">Oscar the Grouch</a></li>
-          <li><a href="/users/sign_out" data-method="delete">Sign out</a></li>
+          <li><%= link_to('Sign_out', destroy_user_session_path, :method => :delete) %></li>
         <% else %>
           <li><a href="/users/sign_up">Sign up</a></li>
           <li><a href="/users/sign_in">Sign in</a></li>

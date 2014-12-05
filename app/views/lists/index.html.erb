@@ -1,59 +1,9 @@
 <div class="page-header">
   <h1>
-    Lists
+    MyLists
     <a href="/lists/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
   </h1>
 </div>
-
-<!-- Simple table layout example -->
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Expiration</th>
-          <th>Privacy</th>
-          <th>User</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @lists.each do |list| %>
-          <tr>
-            <td><%= list.title %></td>
-            <td><%= list.description %></td>
-            <td><%= list.expiration %></td>
-            <td><%= list.privacy %></td>
-            <td><%= list.user_id %></td>
-            <td>
-              <a href="/lists/<%= list.id %>" class="btn btn-primary">
-                <i class="fa fa-search-plus"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-            </td>
-            <td>
-              <a href="/delete_list/<%= list.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- End simple table layout example -->
 
 <!-- Responsive, Isotope-based layout example -->
 
@@ -70,13 +20,10 @@
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">List #<%= list.id %></h3>
+        <h3 class="panel-title"><%= list.title %></h3>
       </div>
       <div class="panel-body">
         <dl>
-          <dt>Title</dt>
-          <dd><%= list.title %></dd>
-
           <dt>Description</dt>
           <dd><%= list.description %></dd>
 
@@ -84,11 +31,13 @@
           <dd><%= list.expiration %></dd>
 
           <dt>Privacy</dt>
-          <dd><%= list.privacy %></dd>
-
-          <dt>User</dt>
-          <dd><%= list.user_id %></dd>
-
+          <% privacy = list.privacy  %>
+          <% case privacy  %>
+          <% when 1  %>
+            <dd>Public</dd>
+          <% when 2  %>
+            <dd>Me only</dd>
+          <% end %>
         </dl>
         <div class="btn-group btn-group-justified">
           <a href="/lists/<%= list.id %>" class="btn btn-primary">
