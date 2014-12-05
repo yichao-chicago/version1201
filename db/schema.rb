@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141202072742) do
     t.string   "store_link"
     t.text     "description"
     t.string   "pic"
-    t.float    "status"
+    t.float    "status", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
