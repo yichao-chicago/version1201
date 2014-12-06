@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get('/update_item/:id', { :controller => 'items', :action => 'update' })
 
   # DELETE
-  get('/delete_item/:id', { :controller => 'items', :action => 'destroy' })
+  delete('/delete_item/:id', { :controller => 'items', :action => 'destroy' })
   #------------------------------
 
   # Routes for the List resource:
