@@ -23,10 +23,8 @@
         <h3 class="panel-title"><%= list.title.titleize %></h3>
       </div>
       <div class="panel-body">
-        <dl>
-          <dt>Description</dt>
-          <dd><%= list.description %></dd>
-
+        <p><%= list.description %></p>
+        <dl class="dl-horizontal">
           <dt>Created_at</dt>
           <dd><%= list.created_at.to_date %></dd>
 
@@ -104,4 +102,16 @@
   }
 </script>
 
+<style>
+  .dl-horizontal dt{
+    text-align: left;
+    /*width: auto;*/
+    /*padding-left: 1em;*/
+    /*padding-right: 1em;*/
+  }
+  .dl-horizontal dd {
+    /*margin-left: 0;*/
+    /*padding-left: 1em;*/
+  }
+</style>
 <!-- End responsive, Isotope-based layout example -->

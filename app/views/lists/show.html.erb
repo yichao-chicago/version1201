@@ -28,8 +28,8 @@
         <% @list.items.each do |item| %>
           <tr>
             <td class="col-md-3 col-sm-5 col-xs-6">
-              <a href="#" class="thumbnail">
-              <img src="<%= item.pic %>" class="img-responsive{width:100%;}" alt="...">
+              <a href="<%= item.pic %>" class="thumbnail">
+                <%= image_tag(item.pic) %>
               </a>
             </td>
             <td class="col-md-7 col-sm-6 col-xs-5">
@@ -44,7 +44,7 @@
               <p>
                 <%= item.description %>
               </p>
-              <p class="hidden-xs"><a href = "http://<%=  item.store_link%>"><%=  item.store_link%></a></p>
+              <p class="hidden-xs"><a href = "http://<%=  item.store_link%>"><%=  truncate(item.store_link, length: 50)%></a></p>
               <p>
                 <p class="visible-xs"><a href = "http://<%=  item.store_link%>">Store Link</a></p>
                 <p>
