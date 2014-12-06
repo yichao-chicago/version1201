@@ -1,96 +1,80 @@
 <!-- Simple full-width example-->
-
-<div class="page-header">
-  <h1>List #<%= @list.id %></h1>
+<div class="row">
+  <div class="jumbotron">
+    <h1><%= @list.title.titleize %></h1>
+    <p><%= @list.description %></p>
+    <p>
+<!--       <a href="/items/new?list_id=<%= @list.id %>" class="btn btn-success btn-lg">Add a new item to this list</a> -->
+      <%= link_to("Add a new item to this list","/items/new?list_id=#{@list.id}",{ :class => "btn btn-success btn-lg"}) %>
+    </p>
+  </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>Title</dt>
-      <dd><%= @list.title %></dd>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td>
+            Total <%= @list.items.count %> items for this list.
+          </td>
+          <td>
+            Sort by
+          </td>
+        </tr>
+      </thead>
 
-      <dt>Description</dt>
-      <dd><%= @list.description %></dd>
+      <tbody>
+        <% @list.items.each do |item| %>
+          <tr>
+            <td class="col-md-3 col-sm-5 col-xs-6">
+              <a href="#" class="thumbnail">
+              <img src="<%= item.pic %>" class="img-responsive{width:100%;}" alt="...">
+              </a>
+            </td>
+            <td class="col-md-7 col-sm-6 col-xs-5">
+              <h4>
+                <%= item.title %>
+              </h3>
+              <p>
+                <% for i in 1..item.rating %>
+                  <i class="fa fa-star text-danger"></i>
+                <% end %>
+              </p>
+              <p>
+                <%= item.description %>
+              </p>
+              <p class="hidden-xs"><a href = "http://<%=  item.store_link%>"><%=  item.store_link%></a></p>
+              <p>
+                <p class="visible-xs"><a href = "http://<%=  item.store_link%>">Store Link</a></p>
+                <p>
+                  <%= item.status %>
+                </p>
 
-      <dt>Expiration</dt>
-      <dd><%= @list.expiration %></dd>
-
-      <dt>Privacy</dt>
-      <dd><%= @list.privacy %></dd>
-
-      <dt>User</dt>
-      <dd><%= @list.user_id %></dd>
-
-      <dt></dt>
-      <dd>
-        <div class="btn-group">
-          <a href="/lists" class="btn btn-primary">
-            <i class="fa fa-chevron-left"></i>
-          </a>
-
-          <a href="/lists/<%= @list.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_list/<%= @list.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
-      </dd>
-    </dl>
-
+              </td>
+            <td class="col-md-2 col-sm-1 col-xs-1">
+              <p>
+                <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
+                  <i class="fa fa-search-plus fa-lg"></i>View
+                </a>
+              </p>
+              <p>
+                <a href="/items/<%= item.id %>/edit" class="btn btn-warning btn-block">
+                  <i class="fa fa-edit fa-lg"></i>Edit
+                </a>
+              </p>
+              <p>
+                <a href="/delete_item/<%= item.id %>" class="btn btn-danger btn-block">
+                  <i class="fa fa-trash-o fa-lg"></i> Delete
+                </a>
+              </p>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
-<!-- End simple full-width example-->
 
-<!-- Responsive panel example-->
-
-<!-- <div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">List #<%= @list.id %></h3>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-12">
-            <dl class="dl-horizontal">
-              <dt>Title</dt>
-              <dd><%= @list.title %></dd>
-
-              <dt>Description</dt>
-              <dd><%= @list.description %></dd>
-
-              <dt>Expiration</dt>
-              <dd><%= @list.expiration %></dd>
-
-              <dt>Privacy</dt>
-              <dd><%= @list.privacy %></dd>
-
-              <dt>User</dt>
-              <dd><%= @list.user_id %></dd>
-
-            </dl>
-            <div class="btn-group btn-group-justified">
-              <a href="/lists" class="btn btn-primary">
-                <i class="fa fa-chevron-left"></i>
-              </a>
-
-              <a href="/lists/<%= @list.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-
-              <a href="/delete_list/<%= @list.id %>" class="btn btn-danger">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- End responsive panel example -->

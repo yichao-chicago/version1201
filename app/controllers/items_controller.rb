@@ -14,14 +14,13 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new
     @item.list_id = params[:list_id]
+    @item.title = params[:title]
     @item.rating = params[:rating]
     @item.store_link = params[:store_link]
     @item.description = params[:description]
-    @item.pic = params[:pic]
-    @item.status = params[:status]
 
     if @item.save
-      redirect_to "/items", :notice => "Item created successfully."
+      redirect_to "/items/#{@item.id}", :notice => "Item created successfully."
     else
       render 'new'
     end
@@ -35,11 +34,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     @item.list_id = params[:list_id]
+    @item.title = params[:title]
     @item.rating = params[:rating]
     @item.store_link = params[:store_link]
     @item.description = params[:description]
     @item.pic = params[:pic]
-    @item.status = params[:status]
 
     if @item.save
       redirect_to "/items", :notice => "Item updated successfully."

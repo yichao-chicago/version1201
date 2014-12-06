@@ -18,23 +18,43 @@
 <div class="row">
   <div class="col-md-12">
     <form action="/create_item" class="form-horizontal">
+
+    <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="col-sm-2 control-label">
+          Name
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="title" name="title" placeholder="For example: Kindle Paperwhite" class="form-control" value="<%= @item.title %>">
+        </div>
+      </div>
+
       <!-- Label and input for list_id -->
       <div class="form-group">
         <label for="list_id" class="col-sm-2 control-label">
           List
         </label>
         <div class="col-sm-10">
-          <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @item.list_id %>">
+          <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control"  <% if params[:list_id].present? %>
+              value="<%= params[:list_id] %>"
+            <% else %>
+              value="<%= @item.list_id %>"
+            <% end %>
+          >
         </div>
       </div>
 
       <!-- Label and input for rating -->
       <div class="form-group">
-        <label for="rating" class="col-sm-2 control-label">
-          Rating
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="<%= @item.rating %>">
+        <label for="star_rating" class="col-sm-2 control-label">Hou Much I Want</label>
+        <div>
+          <span class="star-rating col-sm-10">
+            <input type="radio" name="rating" value="1"><i></i>
+            <input type="radio" name="rating" value="2"><i></i>
+            <input type="radio" name="rating" value="3"><i></i>
+            <input type="radio" name="rating" value="4"><i></i>
+            <input type="radio" name="rating" value="5"><i></i>
+          </span>
         </div>
       </div>
 
@@ -44,7 +64,17 @@
           Store link
         </label>
         <div class="col-sm-10">
-          <input type="text" id="store_link" name="store_link" placeholder="Store link" class="form-control" value="<%= @item.store_link %>">
+          <input type="text" id="store_link" name="store_link" placeholder="Store link, for example: www.amazon.com/gp/product/B00IOY8XWQ" class="form-control" value="<%= @item.store_link %>">
+        </div>
+      </div>
+
+      <!-- Label and input for pic -->
+      <div class="form-group">
+        <label for="pic" class="col-sm-2 control-label">
+          Pic_url
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="pic" name="pic" placeholder="url for the picture" class="form-control" value="<%= @item.pic %>">
         </div>
       </div>
 
@@ -55,26 +85,6 @@
         </label>
         <div class="col-sm-10">
           <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @item.description %></textarea>
-        </div>
-      </div>
-
-      <!-- Label and input for pic -->
-      <div class="form-group">
-        <label for="pic" class="col-sm-2 control-label">
-          Pic
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="pic" name="pic" placeholder="Pic" class="form-control" value="<%= @item.pic %>">
-        </div>
-      </div>
-
-      <!-- Label and input for status -->
-      <div class="form-group">
-        <label for="status" class="col-sm-2 control-label">
-          Status
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @item.status %>">
         </div>
       </div>
 
@@ -90,88 +100,64 @@
 </div>
 
 <!-- End simple full-width example-->
-
-<!-- Responsive panel example -->
-
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Add Item</h3>
-      </div>
-      <div class="panel-body">
-        <form action="/create_item" class="form-horizontal">
-          <!-- Label and input for list_id -->
-          <div class="form-group">
-            <label for="list_id" class="col-sm-2 control-label">
-              List
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @item.list_id %>">
-            </div>
-          </div>
-
-          <!-- Label and input for rating -->
-          <div class="form-group">
-            <label for="rating" class="col-sm-2 control-label">
-              Rating
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="<%= @item.rating %>">
-            </div>
-          </div>
-
-          <!-- Label and input for store_link -->
-          <div class="form-group">
-            <label for="store_link" class="col-sm-2 control-label">
-              Store link
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="store_link" name="store_link" placeholder="Store link" class="form-control" value="<%= @item.store_link %>">
-            </div>
-          </div>
-
-          <!-- Label and input for description -->
-          <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">
-              Description
-            </label>
-            <div class="col-sm-10">
-              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @item.description %></textarea>
-            </div>
-          </div>
-
-          <!-- Label and input for pic -->
-          <div class="form-group">
-            <label for="pic" class="col-sm-2 control-label">
-              Pic
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="pic" name="pic" placeholder="Pic" class="form-control" value="<%= @item.pic %>">
-            </div>
-          </div>
-
-          <!-- Label and input for status -->
-          <div class="form-group">
-            <label for="status" class="col-sm-2 control-label">
-              Status
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @item.status %>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="Create Item" class="btn btn-success">
-              or
-              <a href="/items">Cancel</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- End responsive panel example -->
+<style>
+  .star-rating {
+    font-size: 0;
+    white-space: nowrap;
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+    background-size: contain;
+  }
+  .star-rating i {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    z-index: 1;
+    background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+    background-size: contain;
+  }
+  .star-rating input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    opacity: 0;
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    position: relative;
+  }
+  .star-rating input:hover + i,
+  .star-rating input:checked + i {
+    opacity: 1;
+  }
+  .star-rating i ~ i {
+    width: 40%;
+  }
+  .star-rating i ~ i ~ i {
+    width: 60%;
+  }
+  .star-rating i ~ i ~ i ~ i {
+    width: 80%;
+  }
+  .star-rating i ~ i ~ i ~ i ~ i {
+    width: 100%;
+  }
+  ::after,
+  ::before {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+  }
+</style>

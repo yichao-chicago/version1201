@@ -29,6 +29,15 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="title" class="col-sm-2 control-label">
+          Name
+        </label>
+        <div class="col-sm-10">
+          <input type="text" id="title" name="title" placeholder="For example: Kindle Paperwhite" class="form-control" value="<%= @item.title %>">
+        </div>
+      </div>
+
       <!-- Label and input for rating -->
       <div class="form-group">
         <label for="rating" class="col-sm-2 control-label">
@@ -91,89 +100,3 @@
 </div>
 
 <!-- End simple full-width example-->
-
-<!-- Responsive panel example -->
-
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Edit Item #<%= @item.id %></h3>
-      </div>
-      <div class="panel-body">
-        <form action="/update_item/<%= @item.id %>" class="form-horizontal">
-          <!-- Label and input for list_id -->
-          <div class="form-group">
-            <label for="list_id" class="col-sm-2 control-label">
-              List
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @item.list_id %>">
-            </div>
-          </div>
-
-          <!-- Label and input for rating -->
-          <div class="form-group">
-            <label for="rating" class="col-sm-2 control-label">
-              Rating
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="rating" name="rating" placeholder="Rating" class="form-control" value="<%= @item.rating %>">
-            </div>
-          </div>
-
-          <!-- Label and input for store_link -->
-          <div class="form-group">
-            <label for="store_link" class="col-sm-2 control-label">
-              Store link
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="store_link" name="store_link" placeholder="Store link" class="form-control" value="<%= @item.store_link %>">
-            </div>
-          </div>
-
-          <!-- Label and input for description -->
-          <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">
-              Description
-            </label>
-            <div class="col-sm-10">
-              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @item.description %></textarea>
-            </div>
-          </div>
-
-          <!-- Label and input for pic -->
-          <div class="form-group">
-            <label for="pic" class="col-sm-2 control-label">
-              Pic
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="pic" name="pic" placeholder="Pic" class="form-control" value="<%= @item.pic %>">
-            </div>
-          </div>
-
-          <!-- Label and input for status -->
-          <div class="form-group">
-            <label for="status" class="col-sm-2 control-label">
-              Status
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @item.status %>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="Update Item" class="btn btn-warning">
-              or
-              <a href="/items/<%= @item.id %>">Cancel</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- End responsive panel example -->

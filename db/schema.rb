@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202072742) do
+ActiveRecord::Schema.define(version: 20141206001721) do
 
   create_table "items", force: true do |t|
     t.integer  "list_id"
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20141202072742) do
     t.string   "store_link"
     t.text     "description"
     t.string   "pic"
-    t.float    "status", :default => 0
+    t.float    "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   create_table "lists", force: true do |t|
