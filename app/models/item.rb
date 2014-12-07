@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   after_initialize :init
 
-  belong_to :list
+  belongs_to :list
   has_many :offers
 
   def init
