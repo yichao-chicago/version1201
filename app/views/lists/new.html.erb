@@ -17,7 +17,8 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_list" class="form-horizontal">
+
+    <%= form_tag("/lists", { :class => "form-horizontal"}) do %>
       <!-- Label and input for title -->
       <div class="form-group">
         <label for="title" class="col-sm-2 control-label">
@@ -75,7 +76,8 @@
           <a href="/lists">Cancel</a>
         </div>
       </div>
-    </form>
+
+    <% end %>
   </div>
 </div>
 

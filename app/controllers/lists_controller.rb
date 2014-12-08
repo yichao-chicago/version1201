@@ -40,7 +40,7 @@ class ListsController < ApplicationController
     @list.user_id = params[:user_id]
 
     if @list.save
-      redirect_to "/lists", :notice => "List updated successfully."
+      redirect_to lists_url, :notice => "List updated successfully."
     else
       render 'edit'
     end

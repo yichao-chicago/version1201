@@ -35,21 +35,22 @@ Rails.application.routes.draw do
   delete('/delete_item/:id', { :controller => 'items', :action => 'destroy' })
   #------------------------------
 
+  resources :lists
   # Routes for the List resource:
   # CREATE
-  get('/lists/new', { :controller => 'lists', :action => 'new' })
-  get('/create_list', { :controller => 'lists', :action => 'create' })
+  # get('/lists/new', { :controller => 'lists', :action => 'new', :as => "new_list" })
+  # post('/lists', { :controller => 'lists', :action => 'create', :as => "lists" })
 
-  # READ
-  get('/lists', { :controller => 'lists', :action => 'index' })
-  get('/lists/:id', { :controller => 'lists', :action => 'show' })
+  # # READ
+  # get('/lists', { :controller => 'lists', :action => 'index' })
+  # get('/lists/:id', { :controller => 'lists', :action => 'show', :as => "list" })
 
-  # UPDATE
-  get('/lists/:id/edit', { :controller => 'lists', :action => 'edit' })
-  get('/update_list/:id', { :controller => 'lists', :action => 'update' })
+  # # UPDATE
+  # get('/lists/:id/edit', { :controller => 'lists', :action => 'edit', :as => "edit_list" })
+  # patch('/lists/:id', { :controller => 'lists', :action => 'update' })
 
-  # DELETE
-  get('/delete_list/:id', { :controller => 'lists', :action => 'destroy' })
+  # # DELETE
+  # get('/lists/:id', { :controller => 'lists', :action => 'destroy' })
   #------------------------------
 
   devise_for :users
