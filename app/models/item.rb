@@ -9,4 +9,7 @@ class Item < ActiveRecord::Base
   end
 
   validates :rating, :presence => true
+  validates :description, :presence => true
+  validates :title, :presence => true
+
 end

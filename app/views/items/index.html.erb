@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Items
-    <a href="/items/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+    <a href="/items/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i>&nbsp; <%= "Add a new item".titleize %></a>
   </h1>
 </div>
 
@@ -20,27 +20,29 @@
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Item #<%= item.id %></h3>
+        <h3 class="panel-title"><%= item.title.titleize %></h3>
       </div>
       <div class="panel-body">
         <dl>
+          <a href="<%= item.pic %>" class="thumbnail">
+            <img src="<%= item.pic %>">
+          </a>
+
           <dt>List</dt>
-          <dd><%= item.list_id %></dd>
+          <dd><a href="/lists/<%= item.list.id %>"><%= item.list.title.titleize %></a></dd>
 
-          <dt>Name</dt>
-          <dd><%= item.title %></dd>
-
-          <dt>Rating</dt>
-          <dd><%= item.rating %></dd>
+          <dt>How Much I Want</dt>
+          <dd>
+            <% for i in 1..item.rating %>
+            <i class="fa fa-star text-danger"></i>
+            <% end %>
+          </dd>
 
           <dt>Store link</dt>
           <dd><%= item.store_link %></dd>
 
           <dt>Description</dt>
           <dd><%= item.description %></dd>
-
-          <dt>Pic</dt>
-          <dd><%= item.pic %></dd>
 
           <dt>Status</dt>
           <dd><%= item.status %></dd>
