@@ -13,7 +13,7 @@
 <!-- Simple full-width example -->
 
 <div class="page-header">
-  <h1>Edit List #<%= @list.id %></h1>
+  <h1>Edit List: <%= @list.title %></h1>
 </div>
 
 <div class="row">
@@ -53,7 +53,7 @@
       <!-- Label and input for privacy -->
       <div class="form-group">
         <label for="privacy" class="col-sm-2 control-label">
-          Privacy
+          Who can see this list
         </label>
         <div class="col-sm-10">
           <input type="text" id="privacy" name="privacy" placeholder="Privacy" class="form-control" value="<%= @list.privacy %>">

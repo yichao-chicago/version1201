@@ -18,7 +18,7 @@
 <div class="row">
   <div class="col-md-12">
 
-    <%= form_tag("/lists", { :class => "form-horizontal"}) do %>
+    <%= form_tag lists_url, class: "form-horizontal", method: "post" do %>
       <!-- Label and input for title -->
       <div class="form-group">
         <label for="title" class="col-sm-2 control-label">
