@@ -20,7 +20,11 @@ class ItemsController < ApplicationController
     @item.description = params[:description]
 
     if @item.save
-      redirect_to "/items/#{@item.id}", :notice => "Item created successfully."
+      if @item.list_id.present?
+        redirect_to "/lists/#{@item.list.id}", :notice => "Item created successfully."
+      else
+        redirect_to "/items/#{@item.id}", :notice => "Item created successfully."
+      end
     else
       render 'new'
     end

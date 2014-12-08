@@ -7,4 +7,6 @@ class Item < ActiveRecord::Base
   def init
     self.status = 0 if self.status.nil?
   end
+
+  validates :rating, :presence => true
 end

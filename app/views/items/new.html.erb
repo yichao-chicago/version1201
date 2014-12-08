@@ -18,7 +18,7 @@
 <div class="row">
   <div class="col-md-12">
 
-
+  <%= form_tag "/items", class: "form-horizontal" do %>
     <!-- Label and input for title -->
       <div class="form-group">
         <label for="title" class="col-sm-2 control-label">
@@ -95,7 +95,7 @@
           <a href="/items">Cancel</a>
         </div>
       </div>
-    </form>
+    <% end %>
   </div>
 </div>
 
