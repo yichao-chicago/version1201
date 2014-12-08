@@ -42,8 +42,9 @@
           <div class="col-sm-10">
           <select name="list_id" value ="@item.list_id" class="form-control">
             <% current_user.lists.each do |list| %>
-              <option value = "<%= list.id %>"><%= list.title.titleize %></option>
+              <option value = "<%= list.id %>">MList: <%= list.title.titleize %></option>
             <% end %>
+              <!-- <option><em>Create this item for me. Not classify now.</em></option> -->
           </select>
           </div>
         <% end %>

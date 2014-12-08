@@ -11,5 +11,7 @@ class Item < ActiveRecord::Base
   validates :rating, :presence => true
   validates :description, :presence => true
   validates :title, :presence => true
+  validates :list_id, :presence => true
+  # allow an item does not have list_id, considering add user_id for an item
 
 end
