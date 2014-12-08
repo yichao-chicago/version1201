@@ -13,7 +13,7 @@
 <!-- Simple full-width example -->
 
 <div class="page-header">
-  <h1>Edit List: <%= @list.title %></h1>
+  <h3>You are editing list: <small><em><%= @list.title.titleize %></em></small></h3>
 </div>
 
 <div class="row">
@@ -56,12 +56,12 @@
           Who can see this list
         </label>
         <div class="col-sm-10">
-          <input type="text" id="privacy" name="privacy" placeholder="Privacy" class="form-control" value="<%= @list.privacy %>">
+          <%= select_tag :privacy, options_for_select({"Only me"=>2,"Everyone"=>1}, @list.privacy), class: "form-control" %>
         </div>
       </div>
 
       <!-- Label and input for user_id -->
-      <div class="form-group">
+      <div class="form-group hidden">
         <label for="user_id" class="col-sm-2 control-label">
           User
         </label>
