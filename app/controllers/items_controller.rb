@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     @item.rating = params[:rating]
     @item.store_link = params[:store_link]
     @item.description = params[:description]
+    @item.pic = params[:pic]
 
     if @item.save
       if @item.list_id.present?
@@ -45,7 +46,11 @@ class ItemsController < ApplicationController
     @item.pic = params[:pic]
 
     if @item.save
-      redirect_to "/items", :notice => "Item updated successfully."
+      if @item.list_id.present?
+        redirect_to "/lists/#{@item.list.id}", :notice => "Item updated successfully."
+      else
+        redirect_to "/items", :notice => "Item updated successfully."
+      end
     else
       render 'edit'
     end
