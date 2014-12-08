@@ -29,10 +29,10 @@ Rails.application.routes.draw do
 
   # UPDATE
   get('/items/:id/edit', { :controller => 'items', :action => 'edit' })
-  get('/update_item/:id', { :controller => 'items', :action => 'update' })
+  patch('/items/:id', { :controller => 'items', :action => 'update' })
 
   # DELETE
-  delete('/delete_item/:id', { :controller => 'items', :action => 'destroy' })
+  delete('/items/:id', { :controller => 'items', :action => 'destroy' })
   #------------------------------
 
   resources :lists

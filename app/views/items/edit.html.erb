@@ -18,7 +18,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_item/<%= @item.id %>" class="form-horizontal">
+    <%= form_tag "/items/#{@item.id}", class: "form-horizontal", method: "patch" do %>
       <!-- Label and input for list_id -->
       <div class="form-group">
         <label for="list_id" class="col-sm-2 control-label">
@@ -117,7 +117,7 @@
           <a href="/items/<%= @item.id %>">Cancel</a>
         </div>
       </div>
-    </form>
+    <% end %>
   </div>
 </div>
 

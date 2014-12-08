@@ -46,11 +46,12 @@ class ItemsController < ApplicationController
     @item.pic = params[:pic]
 
     if @item.save
-      if @item.list_id.present?
-        redirect_to "/lists/#{@item.list.id}", :notice => "Item updated successfully."
-      else
-        redirect_to "/items", :notice => "Item updated successfully."
-      end
+      # if @item.list_id.present?
+      #   redirect_to "/lists/#{@item.list.id}", :notice => "Item updated successfully."
+      # else
+      #   redirect_to "/items", :notice => "Item updated successfully."
+      # end
+      redirect_to "/items", :notice => "Item updated successfully."
     else
       render 'edit'
     end

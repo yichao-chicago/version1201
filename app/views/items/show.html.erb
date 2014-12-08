@@ -1,47 +1,59 @@
 <!-- Simple full-width example-->
 
 <div class="page-header">
-  <h1>I do not need this page temporarily. Will do the mark-up later after I enable multi pictures for one single item</h1>
+  <h1>Update page-header later.</h1>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>List</dt>
-      <dd><%= @item.list_id %></dd>
-
-      <dt>Rating</dt>
-      <dd><%= @item.rating %></dd>
-
-      <dt>Store link</dt>
-      <dd><%= @item.store_link %></dd>
-
-      <dt>Description</dt>
-      <dd><%= @item.description %></dd>
-
-      <dt>Pic</dt>
-      <dd><%= @item.pic %></dd>
-
-      <dt>Status</dt>
-      <dd><%= @item.status %></dd>
-
-      <dt></dt>
-      <dd>
-        <div class="btn-group">
-          <a href="/items" class="btn btn-primary">
-            <i class="fa fa-chevron-left"></i>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+<!-- for large screen, col-12 is way too big while leave much space for col-6, maybe insert something interesting later -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @item.title.titleize %></h3>
+      </div>
+      <div class="panel-body">
+        <dl>
+          <a href="<%= @item.pic %>" class="thumbnail">
+            <img src="<%= @item.pic %>">
           </a>
 
-          <a href="/items/<%= @item.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
+          <dt>Belongs to List:</dt>
+          <dd><a href="/lists/<%= @item.list.id %>"><%= @item.list.title.titleize %></a></dd>
 
-          <a href="/delete_item/<%= @item.id %>" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
+          <dt>How Much I Want</dt>
+          <dd>
+            <% for i in 1..@item.rating %>
+            <i class="fa fa-star text-danger"></i>
+            <% end %>
+          </dd>
+
+          <dt>Store link</dt>
+          <dd>
+            <a href = "http://<%=  @item.store_link%>"><%=  truncate(@item.store_link, length: 40)%></a>
+          </dd>
+
+          <dt>Description</dt>
+          <dd><%= @item.description %></dd>
+
+          <dt>Status</dt>
+          <dd><%= @item.status %></dd>
+
+        </dl>
+        <% if current_user == @item.list.user %>
+          <div class="btn-group btn-group-justified">
+            <a href="/items/<%= @item.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+
+            <%= link_to('<i class="fa fa-trash-o"></i>'.html_safe,"/items/#{@item.id}", :method=>:delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this item?"}) %>
+          </div>
+        <% else %>
+          <a href="/offers/new" class="btn btn-primary">
+            <i class="fa fa-gift fa-2x">&nbsp; Make An Offer</i>
           </a>
+        <% end %>
+        <div class="btn-group btn-group-justified">
+
         </div>
-      </dd>
-    </dl>
-
+      </div>
+    </div>
   </div>
-</div>  <!-- End of row-->
