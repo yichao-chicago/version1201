@@ -34,14 +34,19 @@
         <label for="list_id" class="col-sm-2 control-label">
           List
         </label>
-        <div class="col-sm-10">
-          <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control"  <% if params[:list_id].present? %>
-              value="<%= params[:list_id] %>"
-            <% else %>
-              value="<%= @item.list_id %>"
+        <% if params[:list_id].present? %>
+          <div class="col-sm-10">
+            <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= params[:list_id] %>">
+          </div>
+        <% else %>
+          <div class="col-sm-10">
+          <select name="list_id" value ="@item.list_id" class="form-control">
+            <% current_user.lists.each do |list| %>
+              <option value = "<%= list.id %>"><%= list.title.titleize %></option>
             <% end %>
-          >
-        </div>
+          </select>
+          </div>
+        <% end %>
       </div>
 
       <!-- Label and input for rating -->
