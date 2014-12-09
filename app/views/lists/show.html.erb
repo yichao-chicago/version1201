@@ -5,7 +5,7 @@
     <p><%= @list.description %></p>
     <p>
 <!--       <a href="/items/new?list_id=<%= @list.id %>" class="btn btn-success btn-lg">Add a new item to this list</a> -->
-      <%= link_to("Add a new item to this list","/items/new?list_id=#{@list.id}",{ :class => "btn btn-success btn-lg"}) %>
+      <%= link_to("Add a new item to this list","/items/new?list_id=#{@list.id}&from=list",{ :class => "btn btn-success btn-lg"}) %>
     </p>
   </div>
 </div>

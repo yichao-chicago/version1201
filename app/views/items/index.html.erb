@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Items
-    <a href="/items/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i>&nbsp; <%= "Add a new item".titleize %></a>
+    <a href="/items/new?from=item" class="btn btn-lg btn-success"><i class="fa fa-plus"></i>&nbsp; <%= "Add a new item".titleize %></a>
   </h1>
 </div>
 
@@ -29,12 +29,7 @@
           </a>
 
           <dt>Belongs to List:</dt>
-          <!-- item does not belong to a list -->
-          <% if item.list.present? %>
-            <dd><a href="/lists/<%= item.list.id %>"><%= item.list.title.titleize %></a></dd>
-          <% else %>
-            <dd>Unclassified</dd>
-          <% end %>
+          <dd><a href="/lists/<%= item.list.id %>"><%= item.list.title.titleize %></a></dd>
 
           <dt>How Much I Want</dt>
           <dd>

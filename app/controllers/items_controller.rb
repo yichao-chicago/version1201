@@ -21,10 +21,11 @@ class ItemsController < ApplicationController
     @item.pic = params[:pic]
 
     if @item.save
-      if @item.list_id.present?
-        redirect_to "/lists/#{@item.list.id}", :notice => "Item created successfully."
-      else
-        redirect_to "/items/#{@item.id}", :notice => "Item created successfully."
+      from = params[:from]
+      if from == "list"
+        redirect_to "/lists/#{@item.list.id}"
+      else from == "item"
+        redirect_to "/items"
       end
     else
       render 'new'

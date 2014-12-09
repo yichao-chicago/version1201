@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   # Routes for the Offer resource:
   # CREATE
   get('/offers/new', { :controller => 'offers', :action => 'new' })
-  get('/create_offer', { :controller => 'offers', :action => 'create' })
+  post('/offers', { :controller => 'offers', :action => 'create' })
 
   # READ
-  get('/offers', { :controller => 'offers', :action => 'index' })
-  get('/offers/:id', { :controller => 'offers', :action => 'show' })
+  # get('/offers', { :controller => 'offers', :action => 'index' })
+  # get('/offers/:id', { :controller => 'offers', :action => 'show' })
 
   # UPDATE
   get('/offers/:id/edit', { :controller => 'offers', :action => 'edit' })

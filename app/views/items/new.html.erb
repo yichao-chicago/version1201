@@ -29,26 +29,26 @@
         </div>
       </div>
 
+      <input type="hidden" name="from" value="<%= params[:from] %>">
+
+
       <!-- Label and input for list_id -->
-      <div class="form-group">
-        <label for="list_id" class="col-sm-2 control-label">
-          List
-        </label>
-        <% if params[:list_id].present? %>
+      <% if params[:list_id].present? %>
+        <input type="hidden" id="list_id" name="list_id" value="<%= params[:list_id] %>">
+      <% else %>
+        <div class="form-group">
+          <label for="list_id" class="col-sm-2 control-label">
+            List
+          </label>
           <div class="col-sm-10">
-            <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= params[:list_id] %>">
-          </div>
-        <% else %>
-          <div class="col-sm-10">
-          <select name="list_id" value ="@item.list_id" class="form-control">
-            <% current_user.lists.each do |list| %>
+            <select name="list_id" value ="@item.list_id" class="form-control">
+              <% current_user.lists.each do |list| %>
               <option value = "<%= list.id %>">MList: <%= list.title.titleize %></option>
-            <% end %>
-              <!-- <option><em>Create this item for me. Not classify now.</em></option> -->
-          </select>
+              <% end %>
+            </select>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <!-- Label and input for rating -->
       <div class="form-group">
