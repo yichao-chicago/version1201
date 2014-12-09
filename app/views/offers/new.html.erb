@@ -44,7 +44,13 @@
           Proportion
         </label>
         <div class="col-sm-10">
-          <input type="text" id="proportion" name="proportion" placeholder="Proportion" class="form-control" value="<%= @offer.proportion %>">
+          <select name ="proportion" class="form-control" value="<%= @offer.proportion %>">
+            <option value = 0.05>5%</option>
+            <% for i in 1..(1-@item.status)*10-1 %>
+              <option value = <%= i/10.0 %>><%= "#{i*10}%" %></option>
+            <% end %>
+            <option value = <%= 1-@item.status %>>The Rest</option>
+          </select>
         </div>
       </div>
 
