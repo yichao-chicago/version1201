@@ -48,7 +48,11 @@
               <p>
                 <p class="visible-xs"><a href = "http://<%=  item.store_link%>">Store Link</a></p>
                 <p>
-                  <%= item.status %>
+                  <% if item.status == 0 %>
+                    No one has claimed it
+                  <% else %>
+                    Other people have claimed <%= number_to_percentage(item.status*100, precision: 0) %>
+                  <% end %>
                 </p>
 
               </td>

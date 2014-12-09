@@ -35,7 +35,13 @@
           <dd><%= @item.description %></dd>
 
           <dt>Status</dt>
-          <dd><%= @item.status %></dd>
+          <dd>
+            <% if @item.status == 0 %>
+              No one has claimed it.
+            <% else %>
+              <%= number_to_percentage(@item.status*100, precision: 0) %>
+            <% end %>
+          </dd>
 
         </dl>
         <% if current_user == @item.list.user %>
