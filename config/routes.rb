@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'home#homepage'
+  get('/home/contact_us', { :controller => 'home', :action => 'contact_us' })
+
   # Routes for the Offer resource:
   # CREATE
   get('/offers/new', { :controller => 'offers', :action => 'new' })
@@ -11,11 +13,11 @@ Rails.application.routes.draw do
   # get('/offers/:id', { :controller => 'offers', :action => 'show' })
 
   # UPDATE
-  get('/offers/:id/edit', { :controller => 'offers', :action => 'edit' })
-  get('/update_offer/:id', { :controller => 'offers', :action => 'update' })
+  # get('/offers/:id/edit', { :controller => 'offers', :action => 'edit' })
+  # get('/update_offer/:id', { :controller => 'offers', :action => 'update' })
 
   # DELETE
-  get('/delete_offer/:id', { :controller => 'offers', :action => 'destroy' })
+  delete('/delete_offer/:id', { :controller => 'offers', :action => 'destroy' })
   #------------------------------
 
   # Routes for the Item resource:
