@@ -1,11 +1,12 @@
 class Item < ActiveRecord::Base
-  after_initialize :init
+  after_create :init
 
   belongs_to :list
   has_many :offers
 
   def init
-    self.status = 0 if self.status.nil?
+    self.status = 0
+    self.save
   end
 
   validates :rating, :presence => true

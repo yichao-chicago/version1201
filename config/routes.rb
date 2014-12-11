@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'home#homepage'
   get('/home/contact_us', { :controller => 'home', :action => 'contact_us' })
-  get('/home/users', { :controller => 'home', :action => 'users' })
+  get('/people', { :controller => 'home', :action => 'people' })
+  get('/people/:id', { :controller => 'home', :action => 'people_home' })
+  get('/mitems', { :controller => 'home', :action => 'mitem' })
 
   # Routes for the Offer resource:
   # CREATE

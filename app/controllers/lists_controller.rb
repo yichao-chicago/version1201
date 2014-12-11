@@ -20,7 +20,7 @@ class ListsController < ApplicationController
     @list.user_id = params[:user_id]
 
     if @list.save
-      redirect_to "/lists", :notice => "List created successfully."
+      redirect_to "/lists/#{@list.id}", :notice => "List created successfully."
     else
       render 'new'
     end
@@ -51,6 +51,6 @@ class ListsController < ApplicationController
 
     @list.destroy
 
-    redirect_to "/lists", :notice => "List deleted."
+    redirect_to "/people/#{current_user.id}", :notice => "List deleted."
   end
 end

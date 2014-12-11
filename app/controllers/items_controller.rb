@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
       if from == "list"
         redirect_to "/lists/#{@item.list.id}"
       else from == "item"
-        redirect_to "/items"
+        redirect_to "/mitems"
       end
     else
       render 'new'

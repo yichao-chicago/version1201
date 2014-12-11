@@ -20,7 +20,7 @@ class OffersController < ApplicationController
     @offer.item_id = params[:item_id]
 
     radio_prop = params[:full_prop]
-    if radio_prop == true
+    if radio_prop == "true"
       @offer.proportion = 1
     else
       @offer.proportion = params[:proportion]

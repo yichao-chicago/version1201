@@ -5,7 +5,9 @@
     <p><%= @list.description %></p>
     <p>
 <!--       <a href="/items/new?list_id=<%= @list.id %>" class="btn btn-success btn-lg">Add a new item to this list</a> -->
+    <% if current_user.id == @list.user.id %>
       <%= link_to("Add a new item to this list","/items/new?list_id=#{@list.id}&from=list",{ :class => "btn btn-success btn-lg"}) %>
+    <% end %>
     </p>
   </div>
 </div>
@@ -18,8 +20,8 @@
           <td>
             Total <%= @list.items.count %> items for this list.
           </td>
-          <td>
-            Sort by
+          <td class = "text-right">
+            Sort by: name update_time liking
           </td>
         </tr>
       </thead>
@@ -27,12 +29,12 @@
       <tbody>
         <% @list.items.each do |item| %>
           <tr>
-            <td class="col-md-3 col-sm-5 col-xs-6">
+            <td class="col-md-3 col-sm-6 col-xs-6">
               <a href="<%= item.pic %>" class="thumbnail">
                 <%= image_tag(item.pic) %>
               </a>
             </td>
-            <td class="col-md-7 col-sm-6 col-xs-5">
+            <td class="col-md-7 col-sm-4 col-xs-5">
               <h4>
                 <%= item.title %>
               </h3>
@@ -44,7 +46,7 @@
               <p>
                 <%= item.description %>
               </p>
-              <p class="hidden-xs"><a href = "http://<%=  item.store_link%>"><%=  truncate(item.store_link, length: 50)%></a></p>
+              <p class="hidden-xs"><a target="_blank" href = "http://<%=  item.store_link%>"><%=  truncate(item.store_link, length: 50)%></a></p>
               <p>
                 <p class="visible-xs"><a href = "http://<%=  item.store_link%>">Store Link</a></p>
                 <p>
@@ -55,25 +57,43 @@
                   <% end %>
                 </p>
 
-              </td>
-            <td class="col-md-2 col-sm-1 col-xs-1">
-              <p>
-                <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
-                  <i class="fa fa-search-plus fa-lg"></i>View
-                </a>
-              </p>
-              <p>
-                <a href="/items/<%= item.id %>/edit" class="btn btn-warning btn-block">
-                  <i class="fa fa-edit fa-lg"></i>Edit
-                </a>
-              </p>
-              <p>
-                <a href="/delete_item/<%= item.id %>" class="btn btn-danger btn-block">
-                  <i class="fa fa-trash-o fa-lg"></i> Delete
-                </a>
-              </p>
-              </div>
             </td>
+            <% if current_user.id == @list.user_id %>
+              <td class="col-md-2 col-sm-1 col-xs-1">
+                <p>
+                  <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
+                    <i class="fa fa-search-plus fa-lg"></i> View
+                  </a>
+                </p>
+                <p>
+                  <a href="/items/<%= item.id %>/edit" class="btn btn-warning btn-block">
+                    <i class="fa fa-edit fa-lg"></i> Edit
+                  </a>
+                </p>
+                <p>
+                  <a href="/delete_item/<%= item.id %>" class="btn btn-danger btn-block">
+                    <i class="fa fa-trash-o fa-lg"></i> Delete
+                  </a>
+                </p>
+              </td>
+            <% else %>
+              <td class="hidden-xs col-md-2 col-sm-2">
+                <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
+                  <i class="fa fa-search-plus fa-lg"></i> View
+                </a>
+                <% if item.status ==1 %>
+                  <%= link_to('<i class="fa fa-gift fa-2x">&nbsp; Make An Offer</i>'.html_safe,"/offers/new?item_id=#{item.id}", method: "get", class: "btn btn-success disabled") %>
+                <% else %>
+                  <%= link_to('<i class="fa fa-gift fa-2x">&nbsp; Make An Offer</i>'.html_safe,"/offers/new?item_id=#{item.id}", method: "get", class: "btn btn-success") %>
+                <% end %>
+              </td>
+              <td class="visible-xs col-xs-1">
+                <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
+                  <i class="fa fa-search-plus fa-lg"></i> View
+                </a>
+                <%= link_to('<i class="fa fa-gift fa-2x"></i>'.html_safe,"/offers/new?item_id=#{item.id}", method: "get", class: "btn btn-success") %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
