@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # get('/update_offer/:id', { :controller => 'offers', :action => 'update' })
 
   # DELETE
-  delete('/delete_offer/:id', { :controller => 'offers', :action => 'destroy' })
+  # delete('/delete_offer/:id', { :controller => 'offers', :action => 'destroy' })
   #------------------------------
 
   # Routes for the Item resource:
