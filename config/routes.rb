@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get('/people', { :controller => 'home', :action => 'people' })
   get('/people/:id', { :controller => 'home', :action => 'people_home' })
   get('/mitems', { :controller => 'home', :action => 'mitem' })
+  get('/searchresults', { :controller => 'home', :action => 'search' })
 
   # Routes for the Offer resource:
   # CREATE

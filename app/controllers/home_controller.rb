@@ -17,4 +17,9 @@ class HomeController < ApplicationController
   def mitem
     @items = current_user.items
   end
+
+  def search
+    @keyword = params[:search]
+    @search_result = User.where("username like ?", "%#{@keyword}%")
+  end
 end
