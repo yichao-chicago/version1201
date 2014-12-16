@@ -28,7 +28,11 @@ class OffersController < ApplicationController
 
     @item = Item.find(params[:item_id])
     if current_user.id == @item.list.user_id
-      render 'new', :notice => "You are the creator of this Wish List."
+      redirect_to "/offers/new?item_id=#{@item.id}", :notice => "You are the creator of this Wish List." and return
+    end
+
+    if @item.list.token != params[:token]
+      redirect_to "/offers/new?item_id=#{@item.id}", :alert => "The token you entered is wrong. If you are not sure, please contact the list creator." and return
     end
 
     @item.status = @item.status + @offer.proportion

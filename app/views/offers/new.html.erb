@@ -29,10 +29,19 @@
       <% end %>
 
       <div class="form-group">
-        <label for="full_prop" class="col-sm-2 control-label">
+        <label for="token" class="col-sm-3 control-label">
+          Please enter the token
+        </label>
+        <div class="col-sm-9">
+          <input type="text" name="token" placeholder="It should be 12 characters" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="full_prop" class="col-sm-3 control-label">
           Fund full proportion?
         </label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="radio" name="full_prop" value="true" checked="checked">Yes
           <input type="radio" name="full_prop" value="false">No
         </div>
@@ -40,10 +49,10 @@
 
       <!-- Label and input for proportion -->
       <div class="form-group">
-        <label for="proportion" class="col-sm-2 control-label">
+        <label for="proportion" class="col-sm-3 control-label">
           Proportion
         </label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <select name ="proportion" class="form-control" value="<%= @offer.proportion %>">
             <option value = 0.05>5%</option>
             <% for i in 1..(1-@item.status)*10-1 %>
@@ -55,7 +64,7 @@
       </div>
 
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-3 col-sm-9">
           <input type="submit" value="Create Offer" class="btn btn-success">
           or
           <a href="/lists/<%= @item.list_id %>">Cancel</a>
