@@ -54,7 +54,7 @@
                   <i class="fa fa-star text-danger"></i>
                 <% end %>
               </p>
-              <p>
+              <p class="hidden-xs">
                 <%= item.description %>
               </p>
               <p class="hidden-xs"><a target="_blank" href = "http://<%=  item.store_link%>"><%=  truncate(item.store_link, length: 50)%></a></p>
@@ -89,9 +89,7 @@
               </td>
             <% else %>
               <td class="hidden-xs col-md-2 col-sm-2">
-                <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
-                  <i class="fa fa-search-plus fa-lg"></i> View
-                </a>
+                <%= link_to('<i class="fa fa-search-plus fa-2x">&nbsp; View</i>'.html_safe,"/items/#{item.id}", method: "get", class: "btn btn-primary btn-block") %>
                 <% if item.status ==1 %>
                   <%= link_to('<i class="fa fa-gift fa-2x">&nbsp; Make An Offer</i>'.html_safe,"/offers/new?item_id=#{item.id}", method: "get", class: "btn btn-success disabled") %>
                 <% else %>
@@ -99,10 +97,12 @@
                 <% end %>
               </td>
               <td class="visible-xs col-xs-1">
-                <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
-                  <i class="fa fa-search-plus fa-lg"></i> View
-                </a>
-                <%= link_to('<i class="fa fa-gift fa-2x"></i>'.html_safe,"/offers/new?item_id=#{item.id}", method: "get", class: "btn btn-success") %>
+                <%= link_to('<i class="fa fa-search-plus fa-2x"></i>'.html_safe,"/items/#{item.id}", method: "get", class: "btn btn-primary btn-block") %>
+                <% if item.status ==1 %>
+                <%= link_to('<i class="fa fa-gift fa-2x"></i>'.html_safe,"/offers/new?item_id=#{item.id}", method: "get", class: "btn btn-success btn-block disabled") %>
+                <% else %>
+                <%= link_to('<i class="fa fa-gift fa-2x"></i>'.html_safe,"/offers/new?item_id=#{item.id}", method: "get", class: "btn btn-success btn-block") %>
+                <% end %>
               </td>
             <% end %>
           </tr>
