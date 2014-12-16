@@ -17,11 +17,22 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <td>
+          <td class="col-md-3 col-sm-6 col-xs-6">
             Total <%= @list.items.count %> items for this list.
           </td>
-          <td class = "text-right">
-            Sort by: name update_time liking
+          <td class="col-md-7 col-sm-4 col-xs-5"></td>
+          <td class="col-md-2 col-sm-1 col-xs-1">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                Sort by:
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Name</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Update_time</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Liking</a></li>
+              </ul>
+            </div>
           </td>
         </tr>
       </thead>
@@ -29,12 +40,12 @@
       <tbody>
         <% @list.items.each do |item| %>
           <tr>
-            <td class="col-md-3 col-sm-6 col-xs-6">
+            <td>
               <a href="<%= item.pic %>" class="thumbnail">
                 <%= image_tag(item.pic) %>
               </a>
             </td>
-            <td class="col-md-7 col-sm-4 col-xs-5">
+            <td>
               <h4>
                 <%= item.title %>
               </h3>
@@ -59,7 +70,7 @@
 
             </td>
             <% if current_user.id == @list.user_id %>
-              <td class="col-md-2 col-sm-1 col-xs-1">
+              <td>
                 <p>
                   <a href="/items/<%= item.id %>" class="btn btn-primary btn-block">
                     <i class="fa fa-search-plus fa-lg"></i> View

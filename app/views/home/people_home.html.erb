@@ -27,10 +27,10 @@
           <p><%= list.description %></p>
           <dl class="dl-horizontal">
             <dt>Created_at</dt>
-            <dd><%= list.created_at.to_date %></dd>
+            <dd><%= time_ago_in_words(list.created_at.to_date) %></dd>
 
             <dt>Updated_at</dt>
-            <dd><%= list.updated_at.to_date %></dd>
+            <dd><%= time_ago_in_words(list.updated_at.to_date) %></dd>
 
             <dt>Expiration</dt>
             <dd><%= list.expiration %></dd>
@@ -71,10 +71,10 @@
             <p><%= list.description %></p>
             <dl class="dl-horizontal">
               <dt>Created_at</dt>
-              <dd><%= list.created_at.to_date %></dd>
+              <dd><%= time_ago_in_words(list.created_at.to_date) %></dd>
 
               <dt>Updated_at</dt>
-              <dd><%= list.updated_at.to_date %></dd>
+              <dd><%= time_ago_in_words(list.updated_at.to_date) %></dd>
 
               <dt>Expiration</dt>
               <dd><%= list.expiration %></dd>
